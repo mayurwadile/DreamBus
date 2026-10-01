@@ -1,6 +1,6 @@
 import { Routes, Route, NavLink, Navigate } from "react-router-dom";
 import { usePersist } from "./store.js";
-import { Home, Buses, BusDetails, Login, Register, MyBookings, Practicals, NotFound } from "./Pages.jsx";
+import { Home, Buses, BusDetails, Login, Register, MyBookings, NotFound } from "./Pages.jsx";
 
 export default function App() {
   const [user, setUser] = usePersist("db_user", null);
@@ -17,7 +17,6 @@ export default function App() {
           <NavLink to="/" end className={cls}>Home</NavLink>
           <NavLink to="/buses" className={cls}>Bus Tickets</NavLink>
           <NavLink to="/my-bookings" className={cls}>My Bookings</NavLink>
-          <NavLink to="/practicals" className={cls}>Practicals</NavLink>
           {user ? <a href="#logout" onClick={(e) => { e.preventDefault(); setUser(null); }}>Logout ({user})</a>
                 : <NavLink to="/login" className={cls}>Login</NavLink>}
         </div>
@@ -31,7 +30,6 @@ export default function App() {
         <Route path="/my-bookings" element={user ? <MyBookings list={mine}
           onCancel={(id) => setBookings((p) => p.map((b) => b.id === id ? { ...b, status: "CANCELLED", refund: Math.round(b.total * 0.9) } : b))} />
           : <Navigate to="/login" replace />} />
-        <Route path="/practicals" element={<Practicals />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </>

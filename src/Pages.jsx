@@ -138,7 +138,7 @@ export function Login({ users, onLogin }) {
   );
 }
 
-/* ---------- Register (Practical 1 validation rules) ---------- */
+/* ---------- Register form validation rules ---------- */
 export function Register({ users, onRegister }) {
   const empty = { name: "", email: "", mobile: "", gender: "", password: "", confirm: "", terms: false };
   const [v, setV] = useState(empty); const [errs, setErrs] = useState({}); const [ok, setOk] = useState(false);
@@ -199,29 +199,6 @@ export function MyBookings({ list, onCancel }) {
             {b.status === "CONFIRMED" && <button className="btn-outline" onClick={() => { onCancel(b.id); setMsg(`Booking ${b.id} cancelled. Refund of ₹${Math.round(b.total * 0.9)} (90%) initiated.`); }}>Cancel</button>}
           </div>
         </div>
-      ))}
-    </div>
-  );
-}
-
-/* ---------- Practical checklist ---------- */
-export function Practicals() {
-  const rows = [
-    ["1", "Bootstrap-style registration form + client-side validation", "/register", "Try empty submit, bad email, weak password, mismatched passwords"],
-    ["2", "DOM: search, filter, sort, berth selection, fare summary", "/buses", "Filter AC / Non-AC, sort by fare, click berths"],
-    ["3", "ES6 features (let/const, classes, async/await)", null, "Node scripts - run locally with node (see record)"],
-    ["4", "React components, props, useState", "/bus/1", "SeatMap, BookingSummary and state updates"],
-    ["5", "React Router: dynamic route, query string, protected route, 404", "/my-bookings", "Logged out -> redirected to /login; try /xyz for 404"],
-    ["6-9", "MongoDB, Mongoose, Node core, REST API", null, "Backend scripts - run locally (CRUD, API, seat-clash 409)"],
-    ["10", "MERN flow: search -> seats -> pay -> My Bookings -> cancel (90% refund)", "/", "Data persisted in browser storage on this deployment"],
-  ];
-  return (
-    <div className="page">
-      <h1 className="title">Practical Checklist</h1>
-      <p className="sub">Open each feature of the DREAMBUS project record</p>
-      {rows.map(([n, t, to, h]) => (
-        <div className="bus-card" key={n}><div className="row"><strong>Practical {n}</strong>{to ? <Link className="btn-outline" to={to}>Open</Link> : <span className="pill red">Local only</span>}</div>
-          <div>{t}</div><div className="muted">{h}</div></div>
       ))}
     </div>
   );
