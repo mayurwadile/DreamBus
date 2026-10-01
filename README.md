@@ -12,6 +12,5 @@ npm run dev        # http://localhost:5173
 
 vercel.json already contains the SPA rewrite so /bus/1, /my-bookings etc. work on refresh.
 
-## Checking the practicals
-Open /practicals in the site - it links to every feature.
-Flow: Register -> Login -> Home search (Mumbai -> Pune) -> View Seats -> select berths -> Pay & Confirm -> My Bookings -> Cancel (90% refund).
+## Main booking flow
+Register -> Login -> Home search (Mumbai -> Pune) -> View Seats -> select berths -> Pay & Confirm -> My Bookings -> Cancel (90% refund).
